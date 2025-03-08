@@ -10,11 +10,6 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
-const contact_form_module_1 = require("./modules/sample-model/contact-form.module");
-const graphql_1 = require("@nestjs/graphql");
-const apollo_1 = require("@nestjs/apollo");
-const path_1 = require("path");
-const shared_module_1 = require("./modules/shared/shared.module");
 const config_1 = require("@nestjs/config");
 let AppModule = class AppModule {
 };
@@ -25,14 +20,6 @@ exports.AppModule = AppModule = __decorate([
             config_1.ConfigModule.forRoot({
                 envFilePath: '.env',
             }),
-            graphql_1.GraphQLModule.forRoot({
-                driver: apollo_1.ApolloDriver,
-                autoSchemaFile: (0, path_1.join)(process.cwd(), 'src/schema.graphql'),
-                playground: process.env.NODE_ENV === 'development',
-                context: ({ req }) => ({ request: req }),
-            }),
-            shared_module_1.SharedModule,
-            contact_form_module_1.SampleModelModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

@@ -13,13 +13,6 @@ export class CResourceBuilder
 		this.dmmf = Prisma.dmmf;
 	}
 
-	/**
-	 * Adds a resource to the builder
-	 *
-	 * @param resource string
-	 * @param options ResourceOptions
-	 * @returns this
-	 */
 	public addResource ( resource: string, options?: ResourceOptions ): this
 	{
 		const model = this.dmmf.datamodel.models.find((model: any) => model.name === resource);
@@ -31,12 +24,6 @@ export class CResourceBuilder
 		return this;
 	}
 
-	/**
-	 * Compiles the resources into an array of objects
-	 * that can be passed to the AdminJS module
-	 *
-	 * @returns Array<ResourceWithOptions | any>
-	 */
 	public build (): Array<ResourceWithOptions | any>
 	{
 		return this.resources.map((resource) => ({
