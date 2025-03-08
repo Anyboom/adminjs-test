@@ -1,0 +1,51 @@
+name: "adminjs-test"
+services:
+  caddy:
+    container_name: caddy
+    image: caddy:2.7.4
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    networks:
+      - admin_caddy_network
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - ./caddy/caddyfile:/etc/caddy/Caddyfile
+    depends_on:
+      - backend
+  postgres:
+    container_name: postgres
+    image: postgres:14.12
+    restart: unless-stopped
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: beny
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+    ports:
+      - "54321:5432"
+    networks:
+      - admin_network
+  backend:
+    container_name: backend
+    build:
+      context: ../../backend
+    volumes:
+      - ../../backend:/usr/src/app
+    working_dir: /usr/src/app
+    networks:
+      - admin_network
+      - admin_caddy_network
+networks:
+  admin_caddy_network:
+    name: admin_caddy_network
+    external: true
+  admin_network:
+    name: admin_network
+
+volumes:
+  postgres-data:

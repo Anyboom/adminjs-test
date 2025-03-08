@@ -1,0 +1,1 @@
+{"version":3,"file":"CResource.js","sourceRoot":"","sources":["../../../../src/adminjs/prisma/models/CResource.ts"],"names":[],"mappings":";;;AAEA,MAAa,SAAS;IAErB,KAAK,CAAK;IACV,OAAO,CAAiB;IAExB,YAAc,KAAU,EAAE,OAAyB;QAElD,IAAI,CAAC,KAAK,GAAG,KAAK,CAAA;QAClB,IAAI,CAAC,OAAO,GAAG,OAAO,IAAI,EAAE,CAAA;IAC7B,CAAC;CACD;AAVD,8BAUC"}

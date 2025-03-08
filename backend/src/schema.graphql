@@ -1,0 +1,44 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type SampleModelCountAggregate {
+  id: Int!
+  name: Int!
+  _all: Int!
+}
+
+type SampleModelAvgAggregate {
+  id: Float
+}
+
+type SampleModelSumAggregate {
+  id: Int
+}
+
+type SampleModelMinAggregate {
+  id: Int
+  name: String
+}
+
+type SampleModelMaxAggregate {
+  id: Int
+  name: String
+}
+
+type SampleModel {
+  id: ID!
+  name: String!
+}
+
+type Query {
+  hello: String!
+}
+
+type Mutation {
+  createSampleModel(data: SampleModelCreateInput!): SampleModel
+}
+
+input SampleModelCreateInput {
+  name: String!
+}
